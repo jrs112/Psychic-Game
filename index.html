@@ -34,6 +34,8 @@
 
 			var guess = 9;
 
+			var asked = []
+
 
 
 			if (guess === 9) {
@@ -46,11 +48,14 @@
 			document.onkeyup = function() {
 				var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
 				console.log(userGuess);
+				asked.push(userGuess);
+
 
 
 				if (userGuess === computerGuess) {
 					wins++;
 					guess = 9;
+					asked = [];
 					alert("You Win!");
 					computerGuess = options[Math.floor(Math.random()*options.length)];
 					console.log(computerGuess);
@@ -64,6 +69,7 @@
 				else {
 					losses++;
 					guess = 9;
+					asked = []
 					alert("You Lost!");
 					computerGuess = options[Math.floor(Math.random()*options.length)];
 					console.log(computerGuess);
@@ -80,7 +86,7 @@
 				"<h3>Wins: " + wins + "</h3>" +
 				"<h3>Losses: " + losses + "</h3>" +
 				"<h3>Guesses Left: " + guess + "</h3>" +
-				"<h3>Your Guesses so far: " + userGuess + "</h3>";
+				"<h3>Your Guesses so far: " + asked + "</h3>";
 
 				document.querySelector("#game").innerHTML = html;
 
